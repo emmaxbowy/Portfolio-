@@ -1,358 +1,638 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0b0f19;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(11, 15, 25, 0.96);
+    border-bottom: 1px solid #202838;
+    backdrop-filter: blur(10px);
+}
+
+.navbar {
+    max-width: 1150px;
+    margin: auto;
+    padding: 18px 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.logo span {
+    color: #4f8cff;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #c5ccda;
+    font-size: 0.95rem;
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #4f8cff;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 90vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 80px 25px;
+
+    animation: heroFade 0.8s ease forwards;
+}
+
+.hero-content {
+    max-width: 1150px;
+    width: 100%;
+    margin: auto;
+}
+
+.hero-tag {
+    color: #4f8cff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
 
-    <meta
-        name="description"
-        content="Oluwafunmilayo - Web Developer creating modern, responsive websites for businesses and personal brands."
-    >
+.hero h1 {
+    max-width: 850px;
 
-    <title>Oluwafunmilayo | Web Developer</title>
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    line-height: 1.05;
 
-    <link rel="stylesheet" href="style.css">
-</head>
+    margin-bottom: 25px;
+}
 
-<body>
+.hero h1 span {
+    display: block;
+    color: #4f8cff;
+}
 
-    <!-- =========================
-         HEADER
-    ========================== -->
+.hero-description {
+    max-width: 650px;
 
-    <header class="header">
+    color: #aeb7c7;
+    font-size: 1.1rem;
 
-        <nav class="navbar">
+    margin-bottom: 35px;
+}
 
-            <a href="#home" class="logo">
-                Oluwafunmilayo<span>.</span>
-            </a>
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
 
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#services">Services</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-            </div>
 
-        </nav>
+/* =========================
+   BUTTONS
+========================= */
 
-    </header>
+.btn {
+    display: inline-block;
 
+    padding: 14px 25px;
 
-    <!-- =========================
-         MAIN
-    ========================== -->
+    border-radius: 8px;
 
-    <main>
+    font-weight: 700;
 
-        <!-- HERO -->
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease;
+}
 
-        <section id="home" class="hero">
+.primary-btn {
+    background: #4f8cff;
+    color: #ffffff;
+}
 
-            <div class="hero-content">
+.primary-btn:hover {
+    transform: translateY(-3px);
+    background: #3d78e8;
+}
 
-                <p class="hero-tag">
-                    WEB DEVELOPER
-                </p>
+.secondary-btn {
+    border: 1px solid #394457;
+    color: #ffffff;
+}
 
-                <h1>
-                    I Build Modern Websites
-                    <span>That Help Businesses Grow.</span>
-                </h1>
+.secondary-btn:hover {
+    transform: translateY(-3px);
+    border-color: #4f8cff;
+    color: #4f8cff;
+}
 
-                <p class="hero-description">
-                    I create clean, responsive and user-friendly websites
-                    for businesses, brands and personal projects.
-                </p>
 
-                <div class="hero-buttons">
+/* =========================
+   GENERAL SECTIONS
+========================= */
 
-                    <a href="#projects" class="btn primary-btn">
-                        View My Work
-                    </a>
+.section {
+    max-width: 1150px;
+    margin: auto;
 
-                    <a href="#contact" class="btn secondary-btn">
-                        Contact Me
-                    </a>
+    padding: 100px 25px;
 
-                </div>
+    /* Keep sections visible even if JavaScript
+       has not finished loading. */
+    opacity: 1;
+    transform: translateY(0);
+}
 
-            </div>
+.section-heading {
+    margin-bottom: 50px;
+}
 
-        </section>
+.section-heading p {
+    color: #4f8cff;
 
+    font-size: 0.85rem;
+    font-weight: 700;
 
-        <!-- =========================
-             ABOUT
-        ========================== -->
+    letter-spacing: 2px;
 
-        <section id="about" class="section about">
+    margin-bottom: 15px;
+}
 
-            <div class="section-heading">
+.section-heading h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+}
 
-                <p>ABOUT ME</p>
 
-                <h2>
-                    Building Websites With Purpose
-                </h2>
+/* =========================
+   ABOUT
+========================= */
 
-            </div>
+.about-content {
+    display: grid;
 
+    grid-template-columns: 1.2fr 1fr;
 
-            <div class="about-content">
+    gap: 60px;
+}
 
-                <div class="about-text">
+.about-text p {
+    color: #aeb7c7;
 
-                    <p>
-                        I'm Oluwafunmilayo, a web developer focused on
-                        creating modern and responsive websites that look
-                        professional and work smoothly across different
-                        devices.
-                    </p>
+    margin-bottom: 20px;
 
-                    <p>
-                        I work with HTML, CSS and JavaScript to create
-                        business websites, landing pages and personal
-                        websites with clear layouts and user-friendly
-                        experiences.
-                    </p>
+    font-size: 1.05rem;
+}
 
-                </div>
+.skills {
+    display: flex;
+    flex-wrap: wrap;
 
+    gap: 12px;
 
-                <div class="skills">
+    align-content: flex-start;
+}
 
-                    <div class="skill">
-                        HTML5
-                    </div>
+.skill {
+    padding: 12px 17px;
 
-                    <div class="skill">
-                        CSS3
-                    </div>
+    border: 1px solid #293447;
+    border-radius: 8px;
 
-                    <div class="skill">
-                        JavaScript
-                    </div>
+    color: #dce2ed;
 
-                    <div class="skill">
-                        Responsive Design
-                    </div>
+    background: #111827;
 
-                    <div class="skill">
-                        GitHub
-                    </div>
+    transition: 0.3s ease;
+}
 
-                    <div class="skill">
-                        GitHub Pages
-                    </div>
+.skill:hover {
+    border-color: #4f8cff;
+    transform: translateY(-2px);
+}
 
-                </div>
 
-            </div>
+/* =========================
+   SERVICES
+========================= */
 
-        </section>
+.services-grid {
+    display: grid;
 
+    grid-template-columns: repeat(2, 1fr);
 
-        <!-- =========================
-             SERVICES
-        ========================== -->
+    gap: 20px;
+}
 
-        <section id="services" class="section services">
+.service-card {
+    padding: 35px;
 
-            <div class="section-heading">
+    background: #111827;
 
-                <p>WHAT I DO</p>
+    border: 1px solid #202b3d;
+    border-radius: 14px;
 
-                <h2>
-                    My Services
-                </h2>
+    transition: 0.3s ease;
+}
 
-            </div>
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: #4f8cff;
+}
 
+.service-number {
+    color: #4f8cff;
 
-            <div class="services-grid">
+    font-weight: 700;
+}
 
-                <article class="service-card">
+.service-card h3 {
+    font-size: 1.4rem;
 
-                    <span class="service-number">
-                        01
-                    </span>
+    margin: 15px 0;
+}
 
-                    <h3>
-                        Business Websites
-                    </h3>
+.service-card p {
+    color: #aeb7c7;
+}
 
-                    <p>
-                        Professional websites designed to help businesses
-                        establish a strong online presence.
-                    </p>
 
-                </article>
+/* =========================
+   PROJECTS
+========================= */
 
+.projects-grid {
+    display: grid;
 
-                <article class="service-card">
+    grid-template-columns: minmax(0, 1fr);
 
-                    <span class="service-number">
-                        02
-                    </span>
+    max-width: 800px;
+}
 
-                    <h3>
-                        Landing Pages
-                    </h3>
+.project-card {
+    background: #111827;
 
-                    <p>
-                        Clean and focused landing pages designed to present
-                        products, services and important information.
-                    </p>
+    border: 1px solid #202b3d;
+    border-radius: 14px;
 
-                </article>
+    overflow: hidden;
 
+    transition: 0.3s ease;
+}
 
-                <article class="service-card">
+.project-card:hover {
+    transform: translateY(-5px);
 
-                    <span class="service-number">
-                        03
-                    </span>
+    border-color: #4f8cff;
+}
 
-                    <h3>
-                        Responsive Design
-                    </h3>
 
-                    <p>
-                        Websites optimized for phones, tablets and desktop
-                        screens.
-                    </p>
+/* Project image */
 
-                </article>
+.project-image {
+    width: 100%;
+    height: 420px;
 
+    overflow: hidden;
 
-                <article class="service-card">
+    background: #172033;
+}
 
-                    <span class="service-number">
-                        04
-                    </span>
+.project-image img {
+    width: 100%;
+    height: 100%;
 
-                    <h3>
-                        Website Updates
-                    </h3>
+    object-fit: cover;
 
-                    <p>
-                        Updating website content, layouts, images and
-                        sections to keep websites fresh and useful.
-                    </p>
+    object-position: top;
 
-                </article>
+    transition: transform 0.5s ease;
+}
 
-            </div>
+.project-card:hover .project-image img {
+    transform: scale(1.03);
+}
 
-        </section>
 
+/* Project information */
 
-        <!-- =========================
-             PROJECT
-        ========================== -->
+.project-info {
+    padding: 28px;
+}
 
-        <section id="projects" class="section projects">
+.project-info span {
+    color: #4f8cff;
 
-            <div class="section-heading">
+    font-size: 0.8rem;
+    font-weight: 700;
 
-                <p>MY WORK</p>
+    text-transform: uppercase;
 
-                <h2>
-                    Featured Project
-                </h2>
+    letter-spacing: 1px;
+}
 
-            </div>
+.project-info h3 {
+    margin: 8px 0 12px;
 
+    font-size: 1.5rem;
+}
 
-            <div class="projects-grid">
+.project-info p {
+    color: #aeb7c7;
 
-                <article class="project-card">
+    margin-bottom: 20px;
+}
 
-                    <div class="project-image">
+.project-link {
+    color: #4f8cff;
 
-                        <img
-                            src="images/flowfix.jpg"
-                            alt="FlowFix Plumbing website project"
-                        >
+    font-weight: 700;
 
-                    </div>
+    transition: 0.3s ease;
+}
 
+.project-link:hover {
+    color: #78a8ff;
+    padding-left: 5px;
+}
 
-                    <div class="project-info">
 
-                        <span>
-                            Business Website
-                        </span>
+/* =========================
+   CONTACT
+========================= */
 
-                        <h3>
-                            FlowFix Plumbing
-                        </h3>
+.contact {
+    text-align: center;
+}
 
-                        <p>
-                            A modern, responsive website concept created
-                            for a professional plumbing business.
-                        </p>
+.contact-content {
+    max-width: 700px;
 
-                        <a
-                            href="https://emmaxbowy.github.io/flowfix-plumbing/"
-                            class="project-link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            View Project →
-                        </a>
+    margin: auto;
+}
 
-                    </div>
+.contact-content > p {
+    color: #aeb7c7;
 
-                </article>
+    margin-bottom: 35px;
+}
 
-            </div>
+.contact-links {
+    display: flex;
 
-        </section>
+    flex-direction: column;
 
+    gap: 15px;
+}
 
-        <!-- =========================
-             CONTACT
-        ========================== -->
+.contact-item {
+    display: flex;
 
-        <section id="contact" class="section contact">
+    justify-content: space-between;
+    align-items: center;
 
-            <div class="section-heading">
+    padding: 20px;
 
-                <p>
-                    GET IN TOUCH
-                </p>
+    background: #111827;
 
-                <h2>
-                    Let's Build Something Great
-                </h2>
+    border: 1px solid #202b3d;
+    border-radius: 10px;
 
-            </div>
+    transition: 0.3s ease;
+}
 
+.contact-item:hover {
+    border-color: #4f8cff;
 
-            <div class="contact-content">
+    transform: translateY(-2px);
+}
 
-                <p>
-                    Have a project in mind? Feel free to get in touch.
-                    I'd be happy to discuss your website needs.
-                </p>
+.contact-item span {
+    color: #8f9bae;
+}
 
+.contact-item strong {
+    color: #ffffff;
+}
 
-                <div class="contact-links">
 
-                    <a
-                        href="https://wa.me/2347083880854"
-                        class="contact-item"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
+/* =========================
+   FOOTER
+========================= */
 
-                        <span>
-                            WhatsApp
-                        </span>
+.footer {
+    border-top: 1px solid #202838;
 
-                        <strong>
-                            +
+    padding: 30px 25px;
+
+    text-align: center;
+
+    color: #7f899a;
+
+    font-size: 0.9rem;
+}
+
+.footer p {
+    margin: 5px;
+}
+
+
+/* =========================
+   HERO ANIMATION
+========================= */
+
+@keyframes heroFade {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================
+   TABLETS
+========================= */
+
+@media (max-width: 800px) {
+
+    .navbar {
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    .nav-links {
+        gap: 15px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .hero {
+        min-height: auto;
+
+        padding: 90px 25px;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .projects-grid {
+        max-width: 100%;
+    }
+
+    .project-image {
+        height: 400px;
+    }
+
+    .contact-item {
+        flex-direction: column;
+
+        gap: 8px;
+
+        text-align: center;
+    }
+
+}
+
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 480px) {
+
+    .navbar {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .nav-links {
+        font-size: 0.85rem;
+
+        gap: 12px;
+    }
+
+    .hero {
+        padding: 80px 20px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .section {
+        padding: 75px 20px;
+    }
+
+    .section-heading {
+        margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+        font-size: 2.2rem;
+    }
+
+    .service-card {
+        padding: 28px;
+    }
+
+    .project-image {
+        height: 360px;
+    }
+
+    .project-info {
+        padding: 22px;
+    }
+
+    .contact-item {
+        padding: 18px;
+    }
+
+    .contact-item strong {
+        font-size: 0.9rem;
+        word-break: break-word;
+    }
+
+}
